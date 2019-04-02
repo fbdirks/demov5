@@ -16,7 +16,13 @@ include "db_inc.php";
 function db_contact() {
 	global $db_server, $db_user, $db_pass, $db_name;
 		
-	$handle = mysqli_connect($db_server, $db_user, $db_pass, $db_name) or die ("Fout: geen verbinding met de server");
+	$handle = mysqli_connect($db_server, $db_user, $db_pass, $db_name);
+	
+	if(mysqli_connect_errno()) {
+		printf("Connectie mislukt: %s \n",mysqli_connect_errno());
+		exit();
+	}
+	
 	return $handle; # return kan geen resources teruggeven! Daarom deze TWEE regels.
 }
 
@@ -36,24 +42,41 @@ function controle($naam, $wachtwoord)
     // Database functies: contactleggen met mysql en de correcte database
     $mysql = db_contact(); 
 
-    // query opbouwen
-    $query = "Select wachtwoord, nummer, voornaam, achternaam, type FROM gebruikers WHERE username = '$naam'";
-
-    // query uitvoeren en het resultaat sturen naar de array $rij.
-    $resultaat = mysqli_query($mysql,$query) or die("Fout: query niet goed uitgoevoerd");
-    $rij = mysqli_fetch_array($resultaat, MYSQL_NUM);
-    
+		// prepared statement aanpak
+		// 1. initialiseren
+		$stmt = mysqli_stmt_init($mysql);
+		
+		// 2. opbouwen query  (Hier een IF omheen???  zie php documentatie)
+		mysqli_stmt_prepare($stmt, 'SELECT wachtwoord, nummer, voornaam, achternaam, type FROM gebruikers WHERE username=?');
+		
+		// 3. koppelen usernaam aan query
+		mysqli_stmt_bind_param($stmt, "s", $naam);
+		
+		// 4. query uitvoeren
+		mysqli_stmt_execute($stmt);
+		
+		// 5. terug te verkrijgen parameters klaarzetten
+		mysqli_stmt_bind_result($stmt, $ww,$nr,$vn,$an,$ty); 
+		
+		// 6. resultaat opvragen
+		mysqli_stmt_fetch($stmt);
+		
+		
+		// 7. einde
+		mysqli_stmt_close($stmt);
+				
+	
 		// verbinding met de mysql database sluiten
     db_verbreek($mysql);
-
+		
     // controle wachtwoord
-    if (strcmp($wachtwoord, $rij['0']) == 0) {
+    if (strcmp($wachtwoord, $ww) == 0) {
         // als het klopt moeten de sessie variabelen gevuld worden
-        $_SESSION['nummer'] = $rij['1'];
-        $_SESSION['wachtwoord'] = $rij['0'];
-        $_SESSION['voornaam'] = $rij['2'];
-        $_SESSION['achternaam'] = $rij['3'];
-        $_SESSION['soort'] = $rij['4'];
+        $_SESSION['nummer'] = $nr;
+        $_SESSION['wachtwoord'] = $ww;
+        $_SESSION['voornaam'] = $vn;
+        $_SESSION['achternaam'] = $an;
+        $_SESSION['soort'] = $ty;
         return true;
     } else {
         // wachtwoord klopt niet
