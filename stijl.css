@@ -1,0 +1,60 @@
+/*
+font-family: 'Merriweather Sans', sans-serif;
+font-family: 'Cinzel', serif;
+*/
+
+body {
+	font-family: 'Merriweather Sans', sans-serif;
+	background: url('img/boeken.png');
+	background-size: cover;
+}
+
+#titel {
+	font-family: 'Cinzel', serif;
+}
+
+a:link {
+	text-decoration: none;
+	color: #004080;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #004080;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #004080;
+}
+
+a:active {
+	text-decoration: none;
+	color: #004080;
+}
+
+table.inloggen {
+	margin: auto;
+	padding: 10px;
+	background-color: khaki;
+	border: 1px solid grey;
+	border-radius: 15px;
+}
+
+div.menu {
+	
+	background-color: khaki;
+	width: 600px;
+	margin: auto;
+	text-align: center;
+	border: 1px solid grey;
+	border-radius: 10px;
+}
+
+ul.menu {
+	list-style-type: none;
+	font-family: verdana;
+	font-size: 14pt;
+}
+
+
