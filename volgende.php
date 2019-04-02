@@ -6,9 +6,11 @@
 
 
 session_start();
-include "kop.php";
+
 include "functies.php";
 logincheck();
+
+kop();
 
 echo "<table align=\"center\" width=\"50%\" bgcolor=\"#FFFF80\"><tr><td>";
 echo "<div align=\"center\"><br />";
@@ -25,6 +27,6 @@ echo "<br>Uitloggen <a href=\"u_logout.php\">klik</a><br />";
 echo "</div>";
 echo "</td></tr></table>";
 
-include "voet.php";
+voet();
 
 ?>

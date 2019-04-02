@@ -6,8 +6,10 @@
 */
 
 session_start();
-include "kop.php";
+
 include "functies.php";
+
+kop()
 
 $type = logincheck();
 
@@ -38,6 +40,6 @@ if ($type != "B") {
 }
 
 
-include "voet.php";
+voet();
 
 ?>

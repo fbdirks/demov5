@@ -4,10 +4,13 @@
 */
 
 session_start();
-include "kop.php";
+
 include "functies.php";
 
 $type = logincheck(); # opvragen user type. Wordt hier nog niets mee gedaan.
+
+kop();
+
 include "lijstmenu.php";
 
 $nr = $_POST['lijstnr'];
@@ -49,5 +52,5 @@ $i=0;
 <?php
 echo "</div>";
 echo "</td></tr></table>";
-include "voet.php";
+voet();
 ?>

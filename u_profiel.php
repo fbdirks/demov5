@@ -5,8 +5,10 @@
 
 */
 session_start();
-include "kop.php";
+
 include "functies.php";
+
+kop();
 
 logincheck();
 
@@ -109,5 +111,5 @@ echo "</td></tr></table>";
 echo "<a href=\"index.php\">Indexpagina</a>";
 
 
-include "voet.php";
+voet();
 ?>

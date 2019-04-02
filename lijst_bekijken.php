@@ -6,10 +6,14 @@
 */
 
 session_start();
-include "kop.php";
+
 include "functies.php";
 
 $type = logincheck(); # opvragen user type. Wordt hier nog niets mee gedaan.
+
+kop();
+
+
 include "lijstmenu.php";
 
 
@@ -30,5 +34,5 @@ echo "</div>";
 
 
 
-include "voet.php";
+voet();
 ?>

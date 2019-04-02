@@ -81,29 +81,31 @@ function logincheck()
         } else {
             // NEE: formulier weer op scherm zetten
             //return 999;
+            
+            kop();
             ?>
 <div style="text-align: center">
             
             <!-- echo "<table class=\"inloggen\" align=\"center\" width=\"50%\" bgcolor=\"#FFFF80\"><tr><td>"  -->
 						
 						<br>
-	            U bent nog niet (correct) ingelogd. Voer uw inloggegevens in. <br>
+	            <h6>U bent nog niet (correct) ingelogd. Voer uw inloggegevens in.</h6> <br>
 	            <form method="post" action = "<?php echo $_SERVER['PHP_SELF']; ?>">
 		            <table align="center">
-		            	<tr><td>Naam: </td><td><input type="text" name="naam"></td></tr>
-		            	<tr><td>Wachtwoord: </td><td><input type="password" name="wachtwoord"></td></tr>
+		            	<tr><td>Usernaam: </td><td><input type="text" name="naam" placeholder = "inlognaam"></td></tr>
+		            	<tr><td>Wachtwoord: </td><td><input type="password" name="wachtwoord" placeholder="wachtwoord"></td></tr>
 		            	<tr><td><input type="submit" value="verzenden" name="verzonden"></td><td><input type="reset" value="herstel" name="reset"></td></tr>
 		            </table>
 		          </form>
 	          	<br><br>
 	            
-	            <a href="u_registreren.php">Klik hier</a> voor een nieuwe registratie als klant.
+	            <h6><a href="u_registreren.php">Klik hier</a> voor een nieuwe registratie als gebruiker.</h6>
           
         
           </div>  
             <?php
                    
-            include "voet.php";
+            voet();
             exit;
             
         }
@@ -186,8 +188,8 @@ function kop() {
 		</head>
 
 		<body>
-			<table align="center"><tr><td><h1 id="titel">Studie Soci&euml;teit
-    		<img src='img/onshuis.jpg' alt="Logo" align="middle"> CasaNostra</h1>
+			<table align="center"><tr><td><h1 id="titel">
+    		<img src='img/onshuis.jpg' alt="Logo" align="middle"> Studie Soci&euml;teit CasaNostra</h1>
 			</td></tr></table>
 			
     	<hr>
@@ -197,7 +199,7 @@ function kop() {
 
 function voet() {
 	?>
-			<hr>
+			
 			<div align="center">
 				<h6>
 					<a href="index.php">home</a>  &copy; ogol industries, 2012

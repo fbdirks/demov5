@@ -7,10 +7,12 @@
 */
 
 session_start();
-include "kop.php";
+
 include "functies.php";
 
 $type = logincheck();
+
+kop();
 
 if ($type == "us") {
     echo "U bent niet bevoegd deze pagina te gebruiken!";
@@ -28,5 +30,5 @@ if ($type == "us") {
 	echo "</td></tr></table>";
 }
 
-include "voet.php";
+voet();
 ?>

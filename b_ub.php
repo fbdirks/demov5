@@ -1,9 +1,11 @@
 <?php
 session_start();
-include "kop.php";
+
 include "functies.php";
 
 $type = logincheck();
+
+kop();
 
 if ($type == "B") {
 
@@ -87,5 +89,5 @@ if ($type == "B") {
     echo "U bent niet bevoegd deze pagina te gebruiken.";
 }
 
-include "voet.php";
+voet();
 ?>

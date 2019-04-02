@@ -5,10 +5,12 @@
 
 */
 session_start();
-include "kop.php";
+
 include "functies.php";
 
 logincheck();
+
+kop();
 
 if (isset($_POST['pdelta'])) {
     echo "Uitvoeren wijziging";
@@ -115,5 +117,5 @@ echo "</td></tr></table>";
 echo "<a href=\"index.php\">Indexpagina</a>";
 
 
-include "voet.php";
+voet();
 ?>
